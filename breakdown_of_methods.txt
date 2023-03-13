@@ -1,0 +1,32 @@
+Explaination of methods used in MCTS: 
+
+is_fully_expanded()
+checks if all possible moves from this node have been explored,
+ which is when the number of children equals the number of empty spaces on the board.
+
+is_terminal()
+checks if the game is over, either due to a win by either player or a tie.
+
+is_winner()
+checks if the given player has won the game by checking if any of the winning combinations on the board have all the same symbol for that player.
+
+is_tie()
+checks if the game is a tie by checking if there are any empty spaces left on the board.
+
+expand() 
+generates all possible child nodes for the current node,
+each representing a possible move by the current player.
+It does this by finding all empty spaces on the board and creating a new node with the new state of the board after the player makes a move.
+
+select()
+selects the best child node based on the Upper Confidence Bound for Trees (UCT) algorithm. 
+It calculates a score for each child based on its average score and the number of visits it has had,
+as well as an exploration value based on how many times the parent node has been visited. It then returns the child with the highest total score.
+
+simulate() 
+method plays out a random game from the current node until a terminal state is reached, 
+and returns the result of that game as 1 for a win by the current player, -1 for a loss, and 0 for a tie.
+
+backpropagate() 
+method updates the number of visits and total score for the current node and all its parent nodes recursively.
+
